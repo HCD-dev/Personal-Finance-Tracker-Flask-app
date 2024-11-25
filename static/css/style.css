@@ -1,0 +1,110 @@
+/* Genel Ayarlar */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar Ayarları */
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar .navbar-brand {
+    font-weight: bold;
+    color: #fff;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #ddd;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+/* Ana İçerik */
+main {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Formlar */
+form .form-control {
+    border-radius: 4px;
+}
+
+form .btn {
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+
+/* Footer Ayarları */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Flash Message */
+.alert {
+    margin-top: 20px;
+}
+
+/* Responsive Ayarları */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    main {
+        padding: 15px;
+    }
+}
+/* In your styles.css */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.income { color: green; }
+.expense { color: red; }

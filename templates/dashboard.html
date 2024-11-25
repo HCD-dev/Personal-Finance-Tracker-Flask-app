@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block main %}
+<h2>Welcome, {{ user['username'] }}!</h2>
+
+<h3>Income and Expenses</h3>
+
+<!-- Display Total Income, Expenses, and Net Total -->
+<div class="total-summary">
+    <p><strong>Total Income:</strong> ${{ total_income }}</p>
+    <p><strong>Total Expenses:</strong> ${{ total_expenses }}</p>
+    <p><strong>Net Total:</strong> ${{ net_total }}</p>
+</div>
+
+<!-- Chart Section -->
+<h3>Transactions Overview</h3>
+<canvas id="transactionsChart" width="400" height="200"></canvas>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Transaction Name</th>
+            <th>Transaction Type</th>
+            <th>Transaction Date</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in finance_entries %}
+        <tr>
+            <td>{{ entry['transaction_name'] }}</td>
+            <td>{{ entry['transaction_type'] }}</td>
+            <td>{{ entry['transaction_date'] }}</td>
+            <td>
+                {% if entry['transaction_type'] == 'expense' %}
+                <span style="color: red;">- ${{ entry['formatted_amount'] }}</span>
+                {% else %}
+                <span style="color: green;">$ {{ entry['formatted_amount'] }}</span>
+                {% endif %}
+            </td>
+            <td>
+                <form action="{{ url_for('delete_transaction', transaction_id=entry['id']) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">X</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('add_income') }}" class="btn btn-success">Add Income</a>
+<a href="{{ url_for('add_expense') }}" class="btn btn-danger">Add Expense</a>
+
+<!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const transactionNames = {{ finance_entries | map(attribute='transaction_name') | list | tojson }};
+    const transactionAmounts = {{ finance_entries | map(attribute='amount') | list | tojson }};
+    const transactionColors = {{ transaction_colors | tojson }};  // Renkleri kullan
+
+    const ctx = document.getElementById('transactionsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: transactionNames,
+            datasets: [{
+                label: 'Amount ($)',
+                data: transactionAmounts,
+                backgroundColor: transactionColors,
+                borderColor: transactionColors.map(color => color.replace('rgb', 'rgba').replace(')', ', 1)')),
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

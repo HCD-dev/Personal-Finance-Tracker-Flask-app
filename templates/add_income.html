@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Add Income{% endblock %}
+
+{% block main %}
+<h2>Add Income</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="transaction_name">Transaction Name</label>
+        <input type="text" class="form-control" id="transaction_name" name="transaction_name" required>
+    </div>
+    <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" class="form-control" id="amount" name="amount" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="transaction_date">Transaction Date</label>
+        <input type="date" class="form-control" id="transaction_date" name="transaction_date" value="{{ today_date }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Income</button>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Go Back</a>
+</form>
+{% endblock %}
