@@ -38,7 +38,7 @@ Create a virtual environment:
 
  On Windows, use
 
-`venv\Scripts\activate`
+    venv\Scripts\activate
 
 Install the required dependencies:
 
@@ -48,17 +48,18 @@ Run the application:
 
 Option 1: Using Python
 
-python app.py
+    python app.py
 
 Option 2: Using Flask CLI
 First, set the Flask app environment variable:
 
     export FLASK_APP=app.py  
  On Windows, use     
-    `set FLASK_APP=app.py`
+ 
+    set FLASK_APP=app.py
 
 Then, run the app with:
 
-flask run
+    flask run
 
 
