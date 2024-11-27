@@ -21,7 +21,6 @@ Technologies:
     Database: SQLite
     Charting: Chart.js
     Authentication: Flask-Login
-
 Installation & Setup:
 
     Clone the repository:
@@ -40,6 +39,17 @@ pip install -r requirements.txt
 
 Run the application:
 
-    python app.py
+    Option 1: Using Python
+
+python app.py
+
+Option 2: Using Flask CLI
+First, set the Flask app environment variable:
+
+export FLASK_APP=app.py  # On Windows, use `set FLASK_APP=app.py`
+
+Then, run the app with:
+
+flask run
 
 
