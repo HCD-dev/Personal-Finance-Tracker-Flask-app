@@ -2,7 +2,7 @@
 
 # Hüseyin Çağatay DOĞRUYOL
 
-Video Demo: <(https://www.youtube.com/watch?v=hwkpnHLsNiM)>
+Video Demo: <https://www.youtube.com/watch?v=hwkpnHLsNiM)>
 
 Overview:
 Personal Finance Tracker is a web app designed to help users manage and track their finances. It allows for easy tracking of income, expenses, and budgets, while providing visual insights through interactive charts. The app is secure, user-friendly, and fully responsive.
